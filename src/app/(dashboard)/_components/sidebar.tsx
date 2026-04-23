@@ -121,36 +121,40 @@ function SidebarFooter({
   userImageUrl?: string;
 }) {
   return (
-    <div className="flex items-center gap-2.5 border-t border-black/[0.08] p-3">
-      <div className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#11271f]/10">
-        {userImageUrl ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={userImageUrl}
-            alt={userName}
-            className="h-full w-full object-cover"
-          />
-        ) : (
-          <span className="text-xs font-medium text-[#11271f]">
-            {userName.slice(0, 2).toUpperCase()}
+    <div className="flex flex-col gap-2 border-t border-black/[0.08] p-3">
+      <div className="flex items-center gap-2.5 rounded-md px-2 py-1.5">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#11271f]/10">
+          {userImageUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={userImageUrl}
+              alt={userName}
+              className="h-full w-full object-cover"
+            />
+          ) : (
+            <span className="text-xs font-medium text-[#11271f]">
+              {userName.slice(0, 2).toUpperCase()}
+            </span>
+          )}
+        </div>
+        <div className="flex min-w-0 flex-1 flex-col">
+          <span className="truncate text-sm font-medium text-[#11271f]">
+            {userName}
           </span>
-        )}
-      </div>
-      <div className="flex min-w-0 flex-1 flex-col">
-        <span className="truncate text-sm font-medium text-[#11271f]">
-          {userName}
-        </span>
-        {userEmail && (
-          <span className="truncate text-xs text-[#4b5563]">{userEmail}</span>
-        )}
+          {userEmail && (
+            <span className="truncate text-xs text-[#4b5563]">
+              {userEmail}
+            </span>
+          )}
+        </div>
       </div>
       <SignOutButton>
         <button
           type="button"
-          className="flex h-7 w-7 items-center justify-center rounded-md text-[#4b5563] hover:bg-black/5 hover:text-[#11271f]"
-          aria-label="Sign out"
+          className="flex h-9 w-full cursor-pointer items-center justify-center gap-2 rounded-md border border-black/[0.08] bg-white text-sm font-medium text-[#11271f] transition-colors hover:bg-[#11271f] hover:text-white hover:border-[#11271f]"
         >
-          <SignOut size={14} weight="regular" />
+          <SignOut size={16} weight="regular" />
+          <span>Log out</span>
         </button>
       </SignOutButton>
     </div>
